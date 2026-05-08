@@ -1,12 +1,17 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "cleanUrls": true,
+  "cleanUrls": false,
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/((?!api|assets|favicon\\.ico|favicon\\.png|icon-192\\.png|icon-512\\.png|og-image\\.png|manifest\\.json|robots\\.txt|sitemap\\.xml|service-worker\\.js).*)", "destination": "/index.html" }
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
   ],
   "redirects": [
-    { "source": "/(.*)", "has": [{ "type": "host", "value": "lexoraflashcards.com" }], "destination": "https://www.lexoraflashcards.com/$1", "permanent": true }
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "lexoraflashcards.com" }],
+      "destination": "https://www.lexoraflashcards.com/:path*",
+      "permanent": true
+    }
   ],
   "headers": [
     {
