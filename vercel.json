@@ -3,7 +3,7 @@
   "cleanUrls": false,
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/((?!api/).*)", "destination": "/index.html" }
+    { "source": "/((?!api/)(?!tiktok[^/]*\\.txt).*)", "destination": "/index.html" }
   ],
   "redirects": [
     {
@@ -14,6 +14,14 @@
     }
   ],
   "headers": [
+    {
+      "source": "/tiktok:name*.txt",
+      "headers": [
+        { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
+        { "key": "Cache-Control", "value": "no-cache, no-store" },
+        { "key": "X-Robots-Tag", "value": "noindex" }
+      ]
+    },
     {
       "source": "/sitemap.xml",
       "headers": [
