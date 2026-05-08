@@ -1,19 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Lexora</title>
-      <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-      <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
-      <link rel="apple-touch-icon" sizes="192x192" href="/icon-192.png" />
-      <style>html, body { height: 100%; margin: 0; } #root { height: 100%; }</style>
-    </head>
+    <!-- Primary SEO -->
+    <title>Lexora — Flashcards inteligentes con IA para estudiar mejor</title>
+    <meta name="description" content="Crea flashcards con IA desde texto, PDF o Excel. Estudia con repeticion espaciada, simulacros y gamificacion. La app gratuita para aprobar mas rapido la PAU, oposiciones, medicina y mas." />
+    <meta name="author" content="Lexora" />
+    <meta name="keywords" content="flashcards IA, repeticion espaciada, app flashcards, estudiar PAU, selectividad, oposiciones, alternativa Anki, alternativa Quizlet" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="theme-color" content="#FFD700" />
+    <link rel="canonical" href="https://www.lexoraflashcards.com/" />
 
-    <body>
-      <div id="root"></div>
-      <script type="module" src="/src/main.tsx"></script>
-    </body>
-  </html>
-  
+    <!-- Hreflang -->
+    <link rel="alternate" hreflang="es" href="https://www.lexoraflashcards.com/" />
+    <link rel="alternate" hreflang="en" href="https://www.lexoraflashcards.com/" />
+    <link rel="alternate" hreflang="x-default" href="https://www.lexoraflashcards.com/" />
+
+    <!-- Favicon / PWA -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+    <link rel="apple-touch-icon" sizes="192x192" href="/icon-192.png" />
+    <link rel="apple-touch-icon" sizes="512x512" href="/icon-512.png" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Lexora" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Lexora" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:title" content="Lexora — Flashcards inteligentes con IA para estudiar mejor" />
+    <meta property="og:description" content="Crea flashcards con IA desde texto, PDF o Excel. Estudia con repeticion espaciada y gamificacion. Aprueba antes la PAU, oposiciones, medicina y mas." />
+    <meta property="og:image" content="https://www.lexoraflashcards.com/og-image.png" />
+    <meta property="og:image:secure_url" content="https://www.lexoraflashcards.com/og-image.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Lexora — Flashcards inteligentes con IA" />
+    <meta property="og:url" content="https://www.lexoraflashcards.com/" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@lexoraapp" />
+    <meta name="twitter:creator" content="@lexoraapp" />
+    <meta name="twitter:title" content="Lexora — Flashcards inteligentes con IA" />
+    <meta name="twitter:description" content="Crea flashcards con IA desde texto, PDF o Excel. Estudia con repeticion espaciada y aprueba antes." />
+    <meta name="twitter:image" content="https://www.lexoraflashcards.com/og-image.png" />
+    <meta name="twitter:image:alt" content="Lexora — Flashcards inteligentes con IA" />
+
+    <!-- Schema.org JSON-LD: Organization + WebSite + SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://www.lexoraflashcards.com/#organization",
+          "name": "Lexora",
+          "url": "https://www.lexoraflashcards.com/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.lexoraflashcards.com/icon-512.png",
+            "width": 512,
+            "height": 512
+          },
+          "sameAs": [
+            "https://blog.lexoraflashcards.com"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.lexoraflashcards.com/#website",
+          "url": "https://www.lexoraflashcards.com/",
+          "name": "Lexora",
+          "description": "Flashcards inteligentes con IA para estudiar mejor.",
+          "inLanguage": "es-ES",
+          "publisher": { "@id": "https://www.lexoraflashcards.com/#organization" }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "Lexora",
+          "applicationCategory": "EducationalApplication",
+          "operatingSystem": "Web, iOS, Android",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "EUR"
+          },
+          "description": "App de flashcards con IA y repeticion espaciada para estudiar PAU, oposiciones, medicina y mas."
+        }
+      ]
+    }
+    </script>
+
+    <style>html, body { height: 100%; margin: 0; } #root { height: 100%; }</style>
+  </head>
+
+  <body>
+    <div id="root">
+      <noscript>
+        <h1>Lexora — Flashcards inteligentes con IA</h1>
+        <p>Crea flashcards con IA desde texto, PDF o Excel. Estudia con repeticion espaciada, simulacros y gamificacion. La app gratuita para aprobar mas rapido la PAU, oposiciones, medicina y mas.</p>
+        <p>Activa JavaScript para usar Lexora o visita nuestro <a href="https://blog.lexoraflashcards.com">blog</a>.</p>
+      </noscript>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

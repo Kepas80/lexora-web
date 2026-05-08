@@ -1,0 +1,36 @@
+# robots.txt — www.lexoraflashcards.com
+# Generado: 2026-05-08
+
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Permitir explícitamente recursos estáticos para que Googlebot pueda renderizar la SPA
+User-agent: Googlebot
+Allow: /
+Allow: /assets/
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.svg$
+
+# AI bots — permitidos (Lexora no tiene contenido de pago en la web pública)
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# Sitemaps
+Sitemap: https://www.lexoraflashcards.com/sitemap.xml
+Sitemap: https://blog.lexoraflashcards.com/sitemap.xml
+
+# Host (canonical)
+Host: https://www.lexoraflashcards.com

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+    <loc>https://www.lexoraflashcards.com/</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://www.lexoraflashcards.com/que-es</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.lexoraflashcards.com/que-es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lexoraflashcards.com/about"/>
+  </url>
+  <url>
+    <loc>https://www.lexoraflashcards.com/about</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.lexoraflashcards.com/metodo</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.lexoraflashcards.com/metodo"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lexoraflashcards.com/method"/>
+  </url>
+  <url>
+    <loc>https://www.lexoraflashcards.com/method</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.lexoraflashcards.com/funcionalidades</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.lexoraflashcards.com/funcionalidades"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lexoraflashcards.com/features"/>
+  </url>
+  <url>
+    <loc>https://www.lexoraflashcards.com/features</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.lexoraflashcards.com/precios</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.lexoraflashcards.com/precios"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lexoraflashcards.com/pricing"/>
+  </url>
+  <url>
+    <loc>https://www.lexoraflashcards.com/pricing</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.lexoraflashcards.com/soluciones</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.lexoraflashcards.com/soluciones"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lexoraflashcards.com/solutions"/>
+  </url>
+  <url>
+    <loc>https://www.lexoraflashcards.com/solutions</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.lexoraflashcards.com/ayuda</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.lexoraflashcards.com/ayuda"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lexoraflashcards.com/help"/>
+  </url>
+  <url>
+    <loc>https://www.lexoraflashcards.com/help</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://www.lexoraflashcards.com/privacidad</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.lexoraflashcards.com/privacidad"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lexoraflashcards.com/privacypolicy"/>
+  </url>
+  <url>
+    <loc>https://www.lexoraflashcards.com/privacypolicy</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://www.lexoraflashcards.com/terminos</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.lexoraflashcards.com/terminos"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lexoraflashcards.com/terms-of-the-service"/>
+  </url>
+  <url>
+    <loc>https://www.lexoraflashcards.com/terms-of-the-service</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+</urlset>
