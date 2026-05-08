@@ -16,6 +16,8 @@ import { WideImage } from './pages/WideImage';
 import { Solutions } from './pages/Solutions';
 import { Blog } from './pages/Blog';
 import { BlogPost } from './pages/BlogPost';
+import { TikTok } from './pages/TikTok';
+import { TikTokCallback } from './pages/TikTokCallback';
 
 export default function App() {
   return (
@@ -42,9 +44,13 @@ export default function App() {
             <Route path="/contact" component={Help} />
             
             <Route path="/terms-of-the-service" component={Terms} />
+            <Route path="/terms" component={Terms} />
+            <Route path="/terms-of-service" component={Terms} />
             <Route path="/terminos" component={Terms} />
-            
+
             <Route path="/privacypolicy" component={Privacy} />
+            <Route path="/privacy" component={Privacy} />
+            <Route path="/privacy-policy" component={Privacy} />
             <Route path="/privacidad" component={Privacy} />
             
             <Route path="/method" component={Method} />
@@ -60,19 +66,11 @@ export default function App() {
                   <Route path="/blog" component={Blog} />
                   <Route path="/blog/:slug" component={BlogPost} />
 
+            <Route path="/tiktok/callback" component={TikTokCallback} />
+            <Route path="/tiktok" component={TikTok} />
+
             {/* 404 Fallback */}
             <Route>
               <div className="pt-32 text-center">
                 <h1 className="text-4xl font-bold text-[#0F1A33]">404 - Página no encontrada</h1>
-                <a href="/" className="mt-4 inline-block text-[#2D6BFF] hover:underline">Volver al inicio</a>
-              </div>
-            </Route>
-          </Switch>
-        </main>
-
-        <Footer />
-        </div>
-      </LanguageProvider>
-    </HelmetProvider>
-  );
-}
+                <a href="/" className="mt-4 inl
