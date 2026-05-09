@@ -1,0 +1,14 @@
+/* TEAM */
+  Founder & CEO: Iñaki Palomino
+  Site: https://www.lexoraflashcards.com
+  Email: hola@lexoraflashcards.com
+  Location: España
+
+/* THANKS */
+  Comunidad Lexora — estudiantes y profesores que confían en nosotros para preparar PAU, oposiciones, medicina y más.
+
+/* SITE */
+  Standards: HTML5, CSS3, JSON-LD (Schema.org)
+  Components: React + Vite + Vercel
+  Repo: github.com/Kepas80/lexora-web
+  Last update: 2026-05-08

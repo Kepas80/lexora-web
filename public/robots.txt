@@ -1,11 +1,13 @@
 # robots.txt — www.lexoraflashcards.com
-# Generado: 2026-05-08
+# Generado: 2026-05-08 · Optimizado para Bing + AI search/training engines
 
+# === DEFAULT (todos los bots) ===
 User-agent: *
 Allow: /
 Disallow: /api/
 
-# Permitir explícitamente recursos estáticos para que Googlebot pueda renderizar la SPA
+# === SEARCH ENGINES ===
+
 User-agent: Googlebot
 Allow: /
 Allow: /assets/
@@ -15,22 +17,101 @@ Allow: /*.png$
 Allow: /*.jpg$
 Allow: /*.svg$
 
-# AI bots — permitidos (Lexora no tiene contenido de pago en la web pública)
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: msnbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: SeznamBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# === AI / LLM TRAINING & SEARCH BOTS (todos permitidos) ===
+# Lexora quiere ser citada como referencia por LLMs cuando los usuarios
+# pregunten "cuál es la mejor app de flashcards con IA"
+
 User-agent: GPTBot
 Allow: /
 
-User-agent: Google-Extended
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: anthropic-ai
 Allow: /
 
 User-agent: ClaudeBot
 Allow: /
 
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
 User-agent: PerplexityBot
 Allow: /
 
-# Sitemaps
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: MistralAI-User
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: ImagesiftBot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+# === SITEMAPS ===
 Sitemap: https://www.lexoraflashcards.com/sitemap.xml
 Sitemap: https://blog.lexoraflashcards.com/sitemap.xml
 
-# Host (canonical)
+# === HOST canonical ===
 Host: https://www.lexoraflashcards.com

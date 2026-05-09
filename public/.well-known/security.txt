@@ -1,0 +1,7 @@
+# Lexora — Security disclosure policy
+Contact: mailto:security@lexoraflashcards.com
+Contact: https://www.lexoraflashcards.com/help
+Expires: 2027-05-09T07:42:05Z
+Preferred-Languages: es, en
+Canonical: https://www.lexoraflashcards.com/.well-known/security.txt
+Policy: https://www.lexoraflashcards.com/privacypolicy

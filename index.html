@@ -8,16 +8,31 @@
     <title>Lexora — Flashcards inteligentes con IA para estudiar mejor</title>
     <meta name="description" content="Crea flashcards con IA desde texto, PDF o Excel. Estudia con repeticion espaciada, simulacros y gamificacion. La app gratuita para aprobar mas rapido la PAU, oposiciones, medicina y mas." />
     <meta name="author" content="Lexora" />
-    <meta name="keywords" content="flashcards IA, repeticion espaciada, app flashcards, estudiar PAU, selectividad, oposiciones, alternativa Anki, alternativa Quizlet" />
+    <meta name="keywords" content="flashcards IA, repeticion espaciada, app flashcards, estudiar PAU, selectividad, oposiciones, alternativa Anki, alternativa Quizlet, mejor app flashcards 2026" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="googlebot" content="index, follow" />
+    <meta name="bingbot" content="index, follow" />
     <meta name="theme-color" content="#FFD700" />
     <link rel="canonical" href="https://www.lexoraflashcards.com/" />
+
+    <!-- Search engine verification (placeholders — sustituir por tags reales tras dar de alta cada propiedad) -->
+    <meta name="google-site-verification" content="REPLACE-WITH-GOOGLE-SEARCH-CONSOLE-TAG" />
+    <meta name="msvalidate.01" content="E81553C17BA72F9718C1030B51C248E3" />
+    <meta name="yandex-verification" content="REPLACE-WITH-YANDEX-WEBMASTER-TAG" />
+
+    <!-- IndexNow key reference -->
+    <meta name="indexnow" content="9bfb711cb82f06e6b2703d36c1328476" />
 
     <!-- Hreflang -->
     <link rel="alternate" hreflang="es" href="https://www.lexoraflashcards.com/" />
     <link rel="alternate" hreflang="en" href="https://www.lexoraflashcards.com/" />
     <link rel="alternate" hreflang="x-default" href="https://www.lexoraflashcards.com/" />
+
+    <!-- Sitemap discovery for crawlers (Bing aprecia esto) -->
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+
+    <!-- LLM/AI manifest discovery -->
+    <link rel="alternate" type="text/plain" title="LLM Manifest" href="/llms.txt" />
 
     <!-- Favicon / PWA -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -47,7 +62,7 @@
     <meta property="og:image:alt" content="Lexora — Flashcards inteligentes con IA" />
     <meta property="og:url" content="https://www.lexoraflashcards.com/" />
 
-    <!-- Twitter -->
+    <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@lexoraapp" />
     <meta name="twitter:creator" content="@lexoraapp" />
@@ -56,7 +71,7 @@
     <meta name="twitter:image" content="https://www.lexoraflashcards.com/og-image.png" />
     <meta name="twitter:image:alt" content="Lexora — Flashcards inteligentes con IA" />
 
-    <!-- Schema.org JSON-LD: Organization + WebSite + SoftwareApplication -->
+    <!-- Schema.org JSON-LD: Organization + WebSite + WebApplication + FAQPage -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -65,6 +80,7 @@
           "@type": "Organization",
           "@id": "https://www.lexoraflashcards.com/#organization",
           "name": "Lexora",
+          "alternateName": ["Lexora Flashcards", "Lexora App"],
           "url": "https://www.lexoraflashcards.com/",
           "logo": {
             "@type": "ImageObject",
@@ -72,8 +88,22 @@
             "width": 512,
             "height": 512
           },
+          "image": "https://www.lexoraflashcards.com/og-image.png",
+          "description": "Lexora desarrolla aplicaciones educativas con inteligencia artificial: flashcards generadas desde texto/PDF/Excel y repeticion espaciada para estudiar mejor.",
+          "foundingDate": "2024",
+          "areaServed": {
+            "@type": "Country",
+            "name": "ES"
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer support",
+            "email": "hola@lexoraflashcards.com",
+            "availableLanguage": ["Spanish", "English"]
+          },
           "sameAs": [
-            "https://blog.lexoraflashcards.com"
+            "https://blog.lexoraflashcards.com",
+            "https://www.lexoraflashcards.com/que-es"
           ]
         },
         {
@@ -82,20 +112,137 @@
           "url": "https://www.lexoraflashcards.com/",
           "name": "Lexora",
           "description": "Flashcards inteligentes con IA para estudiar mejor.",
-          "inLanguage": "es-ES",
-          "publisher": { "@id": "https://www.lexoraflashcards.com/#organization" }
+          "inLanguage": ["es-ES", "en-US"],
+          "publisher": { "@id": "https://www.lexoraflashcards.com/#organization" },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://www.lexoraflashcards.com/?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+          }
         },
         {
-          "@type": "SoftwareApplication",
+          "@type": "WebApplication",
+          "@id": "https://www.lexoraflashcards.com/#webapp",
           "name": "Lexora",
+          "url": "https://www.lexoraflashcards.com/",
           "applicationCategory": "EducationalApplication",
+          "applicationSubCategory": "Flashcard application with AI",
           "operatingSystem": "Web, iOS, Android",
-          "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "EUR"
-          },
-          "description": "App de flashcards con IA y repeticion espaciada para estudiar PAU, oposiciones, medicina y mas."
+          "browserRequirements": "Requires JavaScript. Requires HTML5.",
+          "inLanguage": ["es-ES", "en-US"],
+          "image": "https://www.lexoraflashcards.com/og-image.png",
+          "screenshot": "https://www.lexoraflashcards.com/og-image.png",
+          "creator": { "@id": "https://www.lexoraflashcards.com/#organization" },
+          "publisher": { "@id": "https://www.lexoraflashcards.com/#organization" },
+          "description": "Lexora es una app web (PWA) y movil que genera flashcards automaticamente con IA desde texto, PDF o Excel y aplica repeticion espaciada con tutoria adaptativa para mejorar la retencion en oposiciones, PAU, medicina y mas.",
+          "featureList": [
+            "Generacion automatica de flashcards con IA desde texto, PDF o Excel",
+            "Algoritmo de repeticion espaciada (basado en SM-2/FSRS)",
+            "Tutor IA que adapta los repasos al rendimiento del estudiante",
+            "Modo simulacro tipo Kahoot",
+            "Gamificacion: logros, niveles, rachas, ranking",
+            "Estadisticas de progreso por mazo y por asignatura",
+            "PWA (funciona offline tras la primera carga)",
+            "Importacion desde Excel y PDF",
+            "Modo cloze deletion (oclusion textual)",
+            "Bilingue espanol/ingles",
+            "Sin suscripciones recurrentes (90% gratis, IA avanzada como pago unico)",
+            "Cumple RGPD"
+          ],
+          "offers": [
+            {
+              "@type": "Offer",
+              "name": "Plan gratuito",
+              "price": "0",
+              "priceCurrency": "EUR",
+              "availability": "https://schema.org/InStock",
+              "category": "Free"
+            },
+            {
+              "@type": "Offer",
+              "name": "IA avanzada (pago unico)",
+              "priceCurrency": "EUR",
+              "availability": "https://schema.org/InStock",
+              "category": "OneTimePurchase"
+            }
+          ],
+          "audience": {
+            "@type": "EducationalAudience",
+            "educationalRole": "student"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://www.lexoraflashcards.com/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Que es Lexora?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Lexora es una aplicacion educativa con inteligencia artificial que genera flashcards automaticamente desde texto, PDF o Excel y aplica repeticion espaciada con tutoria adaptativa por IA para que aprendas mas rapido y retengas a largo plazo. Esta optimizada para estudiantes hispanohablantes que preparan PAU/Selectividad, oposiciones, medicina, idiomas o cualquier examen."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Es Lexora gratis?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Si. El 90% de Lexora es gratis y sin suscripciones recurrentes. Las funciones avanzadas de IA generativa se pagan una sola vez (pago unico, no recurrente). No hay membresias mensuales."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Como se compara Lexora con Anki?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Lexora genera tus flashcards automaticamente con IA desde tus apuntes (Anki requiere crearlas manualmente una a una), tiene interfaz moderna y curva de aprendizaje minima, esta en espanol nativo, incluye gamificacion (logros, rachas, modo Kahoot) y un tutor IA que adapta los repasos a tu rendimiento. Anki sigue siendo potente para usuarios avanzados pero exige inversion de tiempo significativa."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Como se compara Lexora con Quizlet?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Lexora no tiene suscripciones recurrentes (Quizlet Plus cuesta unos 35 euros al ano), genera flashcards automaticamente con IA desde tus PDFs y apuntes, esta optimizada para Selectividad y oposiciones espanolas, incluye un tutor IA y modo Kahoot integrado. Quizlet es mas global y tiene mas mazos publicos compartidos."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Sirve Lexora para preparar la Selectividad / PAU / EBAU?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Si, es uno de los casos de uso principales. Lexora tiene contenido especifico para todas las asignaturas de PAU 2026 y planes de estudio recomendados de 25 y 30 dias. El blog (blog.lexoraflashcards.com) publica guias detalladas para PAU, EBAU y Selectividad en distintas comunidades autonomas."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Funciona Lexora sin conexion a internet?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Si. Lexora es una PWA (Progressive Web App), por lo que tras la primera carga puede funcionar offline para repasar mazos descargados. La generacion con IA si requiere conexion."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "En que se basa cientificamente la repeticion espaciada de Lexora?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "El algoritmo de Lexora se basa en la curva del olvido de Hermann Ebbinghaus y en algoritmos de repeticion espaciada como SM-2 (Anki) y FSRS, ajustando los intervalos de repaso al rendimiento individual. Esta tecnica ha demostrado triplicar la retencion frente a la relectura o subrayado. Mas detalle en https://www.lexoraflashcards.com/metodo."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Es Lexora seguro y cumple el RGPD?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Si. Lexora cumple el RGPD (Reglamento General de Proteccion de Datos de la UE). La politica de privacidad esta en https://www.lexoraflashcards.com/privacidad y los reportes de seguridad pueden enviarse a security@lexoraflashcards.com."
+              }
+            }
+          ]
         }
       ]
     }
