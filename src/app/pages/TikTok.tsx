@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 
-const TIKTOK_CLIENT_KEY = 'awnczpnamcs86jtc';
+const TIKTOK_CLIENT_KEY = 'sbawxemwp8rwq9bdiz';
 const REDIRECT_URI = 'https://www.lexoraflashcards.com/tiktok/callback';
 const SUPABASE_FUNCTION_URL = 'https://cnaryvdbvvouxzlqlcuh.supabase.co/functions/v1/tiktok-post-video';
 
