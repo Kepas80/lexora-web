@@ -1,9 +1,9 @@
-{
+﻿{
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/((?!api/)(?!tiktok[^/]*\\.txt)(?!.*\\.(mp4|mov|webm|png|jpg|jpeg|gif|svg|ico|txt|xml|json|webp|woff|woff2|ttf|otf|eot|css|js)).*)", "destination": "/index.html" }
+    { "source": "/:path*", "destination": "/index.html" }
   ],
   "redirects": [
     {
