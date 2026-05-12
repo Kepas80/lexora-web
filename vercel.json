@@ -3,7 +3,7 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/((?!api/)(?!tiktok[^/]*\\.txt)(?!.*\\.(mp4|mov|webm|png|jpg|jpeg|gif|svg|ico|txt|xml|json|webp|woff2?|ttf|otf|eot|css|js)).*)", "destination": "/index.html" }
+    { "source": "/((?!api/)(?!tiktok[^/]*\\.txt)(?!.*\\.(mp4|mov|webm|png|jpg|jpeg|gif|svg|ico|txt|xml|json|webp|woff|woff2|ttf|otf|eot|css|js)).*)", "destination": "/index.html" }
   ],
   "redirects": [
     {
