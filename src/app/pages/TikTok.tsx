@@ -43,7 +43,7 @@ export function TikTok() {
     const params = new URLSearchParams({
       client_key: TIKTOK_CLIENT_KEY,
       response_type: 'code',
-      scope: 'user.info.basic,video.publish,video.upload',
+      scope: 'user.info.basic,video.publish',
       redirect_uri: REDIRECT_URI,
       state,
     });
@@ -126,7 +126,6 @@ export function TikTok() {
                 <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-3">Permisos solicitados</p>
                 <PermissionRow icon="👤" label="user.info.basic" desc="Ver tu nombre y foto de perfil" />
                 <PermissionRow icon="📤" label="video.publish" desc="Publicar vídeos en tu cuenta" />
-                <PermissionRow icon="🎬" label="video.upload" desc="Subir vídeos para publicar" />
               </div>
 
               <button
