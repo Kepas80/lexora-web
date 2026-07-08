@@ -280,9 +280,9 @@ export function Hero() {
                            >
                               Volver a empezar
                            </button>
-                           <button className="px-6 py-2.5 bg-blue-600 text-white rounded-full shadow-lg hover:shadow-blue-500/30 hover:bg-blue-700 transition-all font-medium flex items-center gap-2 text-sm">
+                           <a href="https://dashboard.lexoraflashcards.com/register" className="px-6 py-2.5 bg-blue-600 text-white rounded-full shadow-lg hover:shadow-blue-500/30 hover:bg-blue-700 transition-all font-medium flex items-center gap-2 text-sm">
                               Empezar a crear <CheckCircle2 className="w-4 h-4" />
-                           </button>
+                           </a>
                         </motion.div>
                      )}
                   </motion.div>
@@ -298,12 +298,12 @@ export function Hero() {
             <motion.div
                initial={{ opacity: 0, y: 24 }}
                animate={{ opacity: 1, y: 0 }}
-               transition={{ duration: 0.8 }}
+               transition={{ duration: 0.25 }}
             >
                <motion.div
                   initial={{ width: 0, opacity: 0 }}
                   animate={{ width: "auto", opacity: 1 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
+                  transition={{ duration: 0.25, delay: 0 }}
                   className="inline-flex items-center gap-2 rounded-full bg-white/50 backdrop-blur-sm px-4 py-1.5 text-sm font-medium text-[#2D6BFF] border border-blue-100 mb-8 shadow-sm"
                >
                   <span className="relative flex h-2 w-2">
@@ -325,12 +325,12 @@ export function Hero() {
                </p>
 
                <div className="mt-10 flex flex-wrap items-center gap-4">
-                  <button className="group relative overflow-hidden rounded-2xl bg-[#0F1A33] px-8 py-4 text-white shadow-xl shadow-blue-900/20 transition-transform hover:scale-[1.02] active:scale-[0.98]">
+                  <a href="https://dashboard.lexoraflashcards.com/register" className="group relative overflow-hidden rounded-2xl bg-[#0F1A33] px-8 py-4 text-white shadow-xl shadow-blue-900/20 transition-transform hover:scale-[1.02] active:scale-[0.98] inline-block">
                      <div className="absolute inset-0 bg-[#2D6BFF] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                      <span className="relative flex items-center gap-2 font-bold">
                         {t('hero.start_free')} <Command className="w-4 h-4 opacity-70" />
                      </span>
-                  </button>
+                  </a>
                   
                   <button onClick={startDemo} className="group rounded-2xl bg-white px-8 py-4 text-[#0F1A33] shadow-lg shadow-slate-200/50 border border-slate-100 font-medium transition-transform hover:scale-[1.02] hover:border-blue-200 active:scale-[0.98]">
                      {t('hero.watch_demo')}
