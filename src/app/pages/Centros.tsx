@@ -1,7 +1,34 @@
+import { useState } from 'react';
 import { motion } from 'motion/react';
 import { GraduationCap, KeyRound, LayoutDashboard, ClipboardCheck, Library, BarChart3 } from 'lucide-react';
 
 export function Centros() {
+  const [form, setForm] = useState({ centro: '', tipo: 'Colegio', alumnos: '', profesores: '',
+    contacto: '', cargo: '', email: '', telefono: '', inicio: 'Este curso', comentarios: '' });
+  const [sending, setSending] = useState(false);
+  const [sent, setSent] = useState(false);
+  const [err, setErr] = useState('');
+  const up = (k: string, v: string) => setForm((f) => ({ ...f, [k]: v }));
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault(); setErr('');
+    if (!form.centro || !form.email || !form.alumnos) { setErr('Rellena al menos centro, email y numero de alumnos.'); return; }
+    setSending(true);
+    try {
+      const res = await fetch('https://cnaryvdbvvouxzlqlcuh.supabase.co/functions/v1/send-institution-email', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          centerName: form.centro, institutionType: form.tipo, contactPerson: form.contacto + (form.cargo ? ' (' + form.cargo + ')' : ''),
+          email: form.email, phone: form.telefono,
+          message: 'Alumnos: ' + form.alumnos + ' | Profesores: ' + (form.profesores || '?') +
+                   ' | Inicio deseado: ' + form.inicio + (form.comentarios ? ' | Comentarios: ' + form.comentarios : ''),
+        }),
+      });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      setSent(true);
+    } catch { setErr('No se pudo enviar. Escribenos desde la pagina de contacto.'); }
+    setSending(false);
+  };
+  const inputCls = 'w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder:text-slate-400 focus:outline-none focus:border-[#22c55e]';
   const fadeIn = {
     initial: { opacity: 0, y: 20 },
     whileInView: { opacity: 1, y: 0 },
@@ -50,7 +77,7 @@ export function Centros() {
             para todo el centro, con panel del profesor, tareas y examenes.
           </motion.p>
           <motion.div {...fadeIn} className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/contact" className="bg-[#22c55e] hover:bg-[#16a34a] text-white font-bold px-8 py-4 rounded-2xl transition-colors shadow-lg">
+            <a href="#contacto" className="bg-[#22c55e] hover:bg-[#16a34a] text-white font-bold px-8 py-4 rounded-2xl transition-colors shadow-lg">
               Pide una demo
             </a>
             <a href="#funciones" className="border border-white/20 text-white font-semibold px-8 py-4 rounded-2xl hover:bg-white/10 transition-colors">
@@ -111,12 +138,37 @@ export function Centros() {
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-[20%] right-[15%] w-[400px] h-[400px] bg-blue-500/20 blur-[120px] rounded-full" />
         </div>
-        <motion.div {...fadeIn} className="relative z-10 max-w-2xl mx-auto">
+        <motion.div {...fadeIn} className="relative z-10 max-w-2xl mx-auto" id="contacto">
           <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight">Pide una demo o presupuesto</h2>
           <p className="mt-4 text-lg text-slate-300">Precio por asiento segun volumen. Te respondemos en menos de 24 horas.</p>
-          <a href="/contact" className="inline-block mt-8 bg-[#22c55e] hover:bg-[#16a34a] text-white font-bold px-10 py-4 rounded-2xl transition-colors shadow-lg">
-            Contactar
-          </a>
+          {sent ? (
+            <div className="mt-10 bg-white/10 border border-white/20 rounded-3xl p-10">
+              <p className="text-2xl font-bold text-white">Recibido.</p>
+              <p className="mt-2 text-slate-300">Te contactaremos en menos de 24 horas con una propuesta para {form.centro}.</p>
+            </div>
+          ) : (
+          <form onSubmit={submit} className="mt-10 text-left grid md:grid-cols-2 gap-4">
+            <input className={inputCls} placeholder="Nombre del centro *" value={form.centro} onChange={(e) => up('centro', e.target.value)} />
+            <select className={inputCls} value={form.tipo} onChange={(e) => up('tipo', e.target.value)}>
+              {['Colegio', 'Universidad', 'Academia', 'Escuela de idiomas', 'Otro'].map((o) => <option key={o} className="text-[#0F1A33]">{o}</option>)}
+            </select>
+            <input className={inputCls} placeholder="Numero de alumnos *" value={form.alumnos} onChange={(e) => up('alumnos', e.target.value)} />
+            <input className={inputCls} placeholder="Numero de profesores" value={form.profesores} onChange={(e) => up('profesores', e.target.value)} />
+            <input className={inputCls} placeholder="Persona de contacto" value={form.contacto} onChange={(e) => up('contacto', e.target.value)} />
+            <input className={inputCls} placeholder="Cargo (director, jefe de estudios...)" value={form.cargo} onChange={(e) => up('cargo', e.target.value)} />
+            <input className={inputCls} type="email" placeholder="Email *" value={form.email} onChange={(e) => up('email', e.target.value)} />
+            <input className={inputCls} placeholder="Telefono" value={form.telefono} onChange={(e) => up('telefono', e.target.value)} />
+            <select className={inputCls + ' md:col-span-2'} value={form.inicio} onChange={(e) => up('inicio', e.target.value)}>
+              {['Este curso', 'Proximo curso', 'Solo estamos explorando'].map((o) => <option key={o} className="text-[#0F1A33]">{o}</option>)}
+            </select>
+            <textarea className={inputCls + ' md:col-span-2 min-h-[100px]'} placeholder="Comentarios (asignaturas, necesidades especiales...)" value={form.comentarios} onChange={(e) => up('comentarios', e.target.value)} />
+            {err && <p className="md:col-span-2 text-red-400 text-sm">{err}</p>}
+            <button type="submit" disabled={sending}
+              className="md:col-span-2 bg-[#22c55e] hover:bg-[#16a34a] disabled:opacity-60 text-white font-bold px-10 py-4 rounded-2xl transition-colors shadow-lg">
+              {sending ? 'Enviando...' : 'Solicitar propuesta'}
+            </button>
+          </form>
+          )}
         </motion.div>
       </section>
     </div>
