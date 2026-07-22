@@ -7,6 +7,7 @@ import { Home } from './pages/Home';
 import { About } from './pages/About';
 import { Features } from './pages/Features';
 import { Pricing } from './pages/Pricing';
+import { Centros } from './pages/Centros';
 import { Help } from './pages/Help';
 import { Terms } from './pages/Terms';
 import { Privacy } from './pages/Privacy';
@@ -38,6 +39,8 @@ export default function App() {
 
               <Route path="/pricing" component={Pricing} />
               <Route path="/precios" component={Pricing} />
+              <Route path="/centros" component={Centros} />
+              <Route path="/para-centros" component={Centros} />
 
               <Route path="/help" component={Help} />
               <Route path="/ayuda" component={Help} />
