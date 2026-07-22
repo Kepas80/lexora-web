@@ -27,6 +27,7 @@ export function Navigation() {
     { name: t('nav.features'), href: '/features' },
     { name: t('nav.method'), href: '/method' },
     { name: t('nav.pricing'), href: '/pricing' },
+    { name: 'Centros', href: '/centros' },
   ];
 
   return (
