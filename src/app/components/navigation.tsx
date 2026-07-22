@@ -59,12 +59,6 @@ export function Navigation() {
                   {link.name}
               </Link>
             ))}
-            <a
-              href="https://blog.lexoraflashcards.com"
-              className="text-sm font-medium text-[#0F1A33] transition-colors hover:text-[#2D6BFF]"
-            >
-              Blog
-            </a>
           </nav>
 
           {/* Actions */}
@@ -137,9 +131,6 @@ export function Navigation() {
                         {link.name}
                   </Link>
                 ))}
-                <a href="https://blog.lexoraflashcards.com" className="block px-3 py-2 rounded-md text-base font-medium text-[#0F1A33] hover:bg-slate-50 hover:text-[#2D6BFF]">
-                  Blog
-                </a>
                 <div className="pt-4 mt-4 border-t border-slate-100 flex flex-col gap-3 px-3">
                     <div className="flex justify-between items-center px-2 mb-2">
                       <span className="text-sm text-slate-500 font-medium">{language === 'es' ? 'Idioma' : 'Language'}</span>
