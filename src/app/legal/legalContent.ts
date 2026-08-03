@@ -2,18 +2,31 @@
  * Fuente única de los textos legales de Lexora.
  * Se renderiza tanto en la web pública como en el dashboard.
  *
- * ⚠️ PENDIENTE ANTES DE CONSIDERARLO DEFINITIVO:
- *   Sustituir TITULAR.nombre, TITULAR.nif y TITULAR.domicilio por los datos reales.
- *   El art. 10 de la Ley 34/2002 (LSSI-CE) obliga a publicarlos de forma
- *   permanente, fácil, directa y gratuita.
+ * ⚠️ ACCIÓN PENDIENTE — IDENTIFICACIÓN DEL TITULAR
+ *
+ *   MOSTRAR_DATOS_TITULAR está en false: los textos publicados no muestran
+ *   nombre, NIF ni domicilio, y ofrecen esos datos a quien los solicite.
+ *
+ *   Hay que rellenar TITULAR y poner el flag a true en cuanto ocurra lo primero
+ *   de estas tres cosas:
+ *     1. Se emita la primera factura (art. 10 LSSI-CE).
+ *     2. Se firme el primer contrato de encargado con un centro (art. 28 RGPD).
+ *     3. Se constituya la sociedad, si se opta por esa vía.
+ *
+ *   El art. 13 del RGPD exige identificar al responsable del tratamiento con
+ *   independencia de que haya ingresos, así que esto es un aplazamiento
+ *   consciente y temporal, no una solución definitiva.
  */
 
 export const LEGAL_VERSION = '2026-08-03';
 
+/** Cambiar a true cuando TITULAR tenga datos reales. */
+export const MOSTRAR_DATOS_TITULAR = false;
+
 export const TITULAR = {
-  nombre: '[PENDIENTE: nombre y apellidos o razón social del titular]',
-  nif: '[PENDIENTE: NIF / CIF]',
-  domicilio: '[PENDIENTE: domicilio a efectos de notificaciones]',
+  nombre: '',
+  nif: '',
+  domicilio: '',
   email: 'hola@lexoraflashcards.com',
   emailPrivacidad: 'privacidad@lexoraflashcards.com',
   emailCentros: 'centros@lexoraflashcards.com',
@@ -49,16 +62,28 @@ export const AVISO_LEGAL: LegalDoc = {
   secciones: [
     {
       h: '1. Datos identificativos del titular',
-      p: [
-        'En cumplimiento del artículo 10 de la Ley 34/2002, de servicios de la sociedad de la información y de comercio electrónico (LSSI-CE), se informa de los siguientes datos:',
-      ],
-      ul: [
-        `Titular: ${TITULAR.nombre}`,
-        `NIF: ${TITULAR.nif}`,
-        `Domicilio a efectos de notificaciones: ${TITULAR.domicilio}`,
-        `Correo electrónico: ${TITULAR.email}`,
-        `Sitio web: ${TITULAR.web} · Aplicación: ${TITULAR.app}`,
-      ],
+      p: MOSTRAR_DATOS_TITULAR
+        ? [
+            'En cumplimiento del artículo 10 de la Ley 34/2002, de servicios de la sociedad de la información y de comercio electrónico (LSSI-CE), se informa de los siguientes datos:',
+          ]
+        : [
+            'Lexora es un proyecto educativo desarrollado y operado de forma independiente. Puedes contactar con la persona responsable del servicio por cualquiera de las vías indicadas a continuación.',
+            `Si necesitas los datos identificativos completos del titular —nombre, NIF y domicilio— por un motivo legítimo, por ejemplo para formalizar un contrato o presentar una reclamación, escríbenos a ${TITULAR.email} y te los facilitaremos sin coste y sin demora.`,
+          ],
+      ul: MOSTRAR_DATOS_TITULAR
+        ? [
+            `Titular: ${TITULAR.nombre}`,
+            `NIF: ${TITULAR.nif}`,
+            `Domicilio a efectos de notificaciones: ${TITULAR.domicilio}`,
+            `Correo electrónico: ${TITULAR.email}`,
+            `Sitio web: ${TITULAR.web} · Aplicación: ${TITULAR.app}`,
+          ]
+        : [
+            `Correo electrónico de contacto: ${TITULAR.email}`,
+            `Correo para asuntos de privacidad: ${TITULAR.emailPrivacidad}`,
+            `Correo para centros educativos: ${TITULAR.emailCentros}`,
+            `Sitio web: ${TITULAR.web} · Aplicación: ${TITULAR.app}`,
+          ],
     },
     {
       h: '2. Objeto',
@@ -240,7 +265,9 @@ export const TERMINOS: LegalDoc = {
     {
       h: '1. Quiénes somos y qué aceptas',
       p: [
-        `Estas condiciones regulan el acceso y uso de Lexora, prestado por ${TITULAR.nombre} (NIF ${TITULAR.nif}), con domicilio en ${TITULAR.domicilio} y correo ${TITULAR.email}.`,
+        MOSTRAR_DATOS_TITULAR
+          ? `Estas condiciones regulan el acceso y uso de Lexora, prestado por ${TITULAR.nombre} (NIF ${TITULAR.nif}), con domicilio en ${TITULAR.domicilio} y correo ${TITULAR.email}.`
+          : `Estas condiciones regulan el acceso y uso de Lexora, plataforma educativa operada desde España por la persona titular del proyecto, con quien puedes contactar en ${TITULAR.email}. Los datos identificativos completos están disponibles a petición y figuran en el aviso legal.`,
         'Al crear una cuenta aceptas estas condiciones y la política de privacidad. Si no estás de acuerdo con alguna parte, no puedes usar el servicio.',
       ],
     },
@@ -343,13 +370,24 @@ export const PRIVACIDAD: LegalDoc = {
   secciones: [
     {
       h: '1. Responsable del tratamiento',
-      p: ['Conforme al Reglamento (UE) 2016/679 (RGPD) y a la Ley Orgánica 3/2018 (LOPDGDD):'],
-      ul: [
-        `Responsable: ${TITULAR.nombre} — NIF ${TITULAR.nif}`,
-        `Domicilio: ${TITULAR.domicilio}`,
-        `Contacto en materia de protección de datos: ${TITULAR.emailPrivacidad}`,
-        'No se ha designado delegado de protección de datos por no concurrir los supuestos del artículo 37 del RGPD.',
-      ],
+      p: MOSTRAR_DATOS_TITULAR
+        ? ['Conforme al Reglamento (UE) 2016/679 (RGPD) y a la Ley Orgánica 3/2018 (LOPDGDD):']
+        : [
+            'El responsable del tratamiento de tus datos es la persona física titular del proyecto Lexora, que opera de forma independiente desde España.',
+            `Puedes solicitar sus datos identificativos completos escribiendo a ${TITULAR.emailPrivacidad}; te los facilitaremos de forma gratuita. Esa misma dirección es el canal para ejercer cualquiera de tus derechos.`,
+          ],
+      ul: MOSTRAR_DATOS_TITULAR
+        ? [
+            `Responsable: ${TITULAR.nombre} — NIF ${TITULAR.nif}`,
+            `Domicilio: ${TITULAR.domicilio}`,
+            `Contacto en materia de protección de datos: ${TITULAR.emailPrivacidad}`,
+            'No se ha designado delegado de protección de datos por no concurrir los supuestos del artículo 37 del RGPD.',
+          ]
+        : [
+            `Contacto en materia de protección de datos: ${TITULAR.emailPrivacidad}`,
+            'Ámbito de establecimiento: España (Unión Europea).',
+            'No se ha designado delegado de protección de datos por no concurrir los supuestos del artículo 37 del RGPD.',
+          ],
     },
     {
       h: '2. Qué datos tratamos',
