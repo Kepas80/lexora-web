@@ -41,6 +41,9 @@ export function Footer() {
                 <ul className="space-y-3 text-sm text-slate-600">
                     <li><Link href="/terms-of-the-service" className="hover:text-[#2D6BFF] transition-colors">{t('nav.terms')}</Link></li>
                     <li><Link href="/privacypolicy" className="hover:text-[#2D6BFF] transition-colors">{t('nav.privacy')}</Link></li>
+                    <li><Link href="/inteligencia-artificial" className="hover:text-[#2D6BFF] transition-colors">Uso de IA</Link></li>
+                    <li><Link href="/cookies" className="hover:text-[#2D6BFF] transition-colors">Cookies</Link></li>
+                    <li><Link href="/aviso-legal" className="hover:text-[#2D6BFF] transition-colors">Aviso legal</Link></li>
                 </ul>
             </div>
         </div>
