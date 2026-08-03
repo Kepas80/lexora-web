@@ -11,6 +11,9 @@ import { Centros } from './pages/Centros';
 import { Help } from './pages/Help';
 import { Terms } from './pages/Terms';
 import { Privacy } from './pages/Privacy';
+import { Legal } from './pages/Legal';
+import { Cookies } from './pages/Cookies';
+import { AiPolicy } from './pages/AiPolicy';
 import { Method } from './pages/Method';
 import { Thanks } from './pages/Thanks';
 import { WideImage } from './pages/WideImage';
@@ -55,6 +58,17 @@ export default function App() {
               <Route path="/privacy" component={Privacy} />
               <Route path="/privacy-policy" component={Privacy} />
               <Route path="/privacidad" component={Privacy} />
+
+              <Route path="/aviso-legal" component={Legal} />
+              <Route path="/legal" component={Legal} />
+              <Route path="/legal-notice" component={Legal} />
+
+              <Route path="/cookies" component={Cookies} />
+              <Route path="/politica-de-cookies" component={Cookies} />
+
+              <Route path="/inteligencia-artificial" component={AiPolicy} />
+              <Route path="/politica-de-ia" component={AiPolicy} />
+              <Route path="/ai-policy" component={AiPolicy} />
 
               <Route path="/method" component={Method} />
               <Route path="/metodo" component={Method} />
