@@ -89,6 +89,23 @@ function cargarScript(src: string) {
   document.head.appendChild(s);
 }
 
+/**
+ * Borra las cookies de análisis y marketing que pudieran haberse depositado
+ * antes de implantar este aviso, o en una visita anterior con consentimiento.
+ */
+function limpiarCookies(prefijos: string[]) {
+  const host = location.hostname;
+  const dominios = [host, `.${host}`, `.${host.split('.').slice(-2).join('.')}`];
+  document.cookie.split(';').forEach((entrada) => {
+    const nombre = entrada.trim().split('=')[0];
+    if (!nombre || !prefijos.some((p) => nombre.startsWith(p))) return;
+    dominios.forEach((d) => {
+      document.cookie = `${nombre}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=${d}`;
+    });
+    document.cookie = `${nombre}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/`;
+  });
+}
+
 /** Traduce la decisión a Consent Mode v2 y carga los scripts autorizados. */
 export function aplicarConsentimiento(c: Consentimiento) {
   gtag('consent', 'update', {
@@ -111,6 +128,10 @@ export function aplicarConsentimiento(c: Consentimiento) {
     window.uetq = window.uetq || [];
     window.uetq.push('ev', 'pageLoad');
   }
+
+  // Si se rechaza, no basta con no cargar: hay que retirar lo que ya estuviera puesto
+  if (!c.analitica) limpiarCookies(['_ga', '_gid', '_gat']);
+  if (!c.marketing) limpiarCookies(['_uet', 'MUID']);
 }
 
 /** Se llama una vez al arrancar la app. */
