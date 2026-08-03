@@ -3,6 +3,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { Navigation } from './components/navigation';
 import { LanguageProvider } from './lib/LanguageContext';
 import { Footer } from './components/footer';
+import { CookieBanner } from './components/CookieBanner';
 import { Home } from './pages/Home';
 import { About } from './pages/About';
 import { Features } from './pages/Features';
@@ -100,6 +101,7 @@ export default function App() {
           </main>
 
           <Footer />
+          <CookieBanner />
         </div>
       </LanguageProvider>
     </HelmetProvider>
