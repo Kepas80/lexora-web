@@ -206,15 +206,22 @@ export const POLITICA_COOKIES: LegalDoc = {
       ],
     },
     {
-      h: '4. Cookies de terceros',
+      h: '4. Cookies de marketing',
+      p: [
+        'Utilizamos Microsoft Advertising (Bing UET) para medir el resultado de nuestras campañas publicitarias. Solo se cargan si las aceptas expresamente y puedes rechazarlas sin ninguna consecuencia.',
+      ],
+    },
+    {
+      h: '5. Cookies de terceros',
       p: [
         'Al procesar un pago, Stripe instala cookies propias necesarias para la prevención del fraude. Si reproduces un vídeo incrustado de YouTube, ese servicio puede instalar sus propias cookies. Ambos son responsables independientes de esos tratamientos.',
       ],
     },
     {
-      h: '5. Cómo gestionar tu elección',
+      h: '6. Cómo gestionar tu elección',
       p: [
-        'Puedes aceptar, rechazar o configurar las cookies no necesarias desde el aviso que aparece la primera vez que entras, y cambiar tu decisión en cualquier momento desde el enlace «Preferencias de cookies» del pie de página.',
+        'Puedes aceptar, rechazar o configurar las cookies no necesarias desde el aviso que aparece la primera vez que entras. Rechazar es tan sencillo como aceptar: un solo clic en ese mismo aviso, y la web funciona exactamente igual.',
+        'Puedes cambiar tu decisión cuando quieras desde el enlace «Preferencias de cookies» del pie de página. Tu elección se conserva veinticuatro meses; pasado ese plazo volveremos a preguntarte.',
         'También puedes eliminarlas o bloquearlas desde la configuración de tu navegador. Ten en cuenta que bloquear las cookies técnicas impedirá que puedas iniciar sesión.',
       ],
     },

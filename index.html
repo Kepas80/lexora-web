@@ -248,20 +248,19 @@
     }
     </script>
 
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRHZ3N9WS"></script>
+    <!-- Consent Mode v2: por defecto TODO denegado. Ni analitica ni marketing
+         se cargan hasta que la persona usuaria lo autoriza en el aviso de cookies
+         (art. 22.2 LSSI). La carga real la hace src/app/legal/consent.ts -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-RPRHZ3N9WS');
-    </script>
-
-    <!-- Bing UET -->
-    <script>
-    (function(w,d){var s=d.createElement('script');s.async=true;s.src='https://bat.bing.com/bat.js';var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);})(window,document);
-    window.uetq = window.uetq || [];
-    window.uetq.push("ev", "pageLoad");
+      gtag('consent', 'default', {
+        analytics_storage: 'denied',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        wait_for_update: 500
+      });
     </script>
 
     <style>html, body { height: 100%; margin: 0; } #root { height: 100%; }</style>

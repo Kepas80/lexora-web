@@ -1,4 +1,5 @@
 import { Link } from 'wouter';
+import { abrirPreferenciasCookies } from '../legal/consent';
 import logo from 'figma:asset/53f834244f6a2d1f9693f8d153b9431206518c95.png';
 import { useLanguage } from '../lib/LanguageContext';
 
@@ -44,6 +45,7 @@ export function Footer() {
                     <li><Link href="/inteligencia-artificial" className="hover:text-[#2D6BFF] transition-colors">Uso de IA</Link></li>
                     <li><Link href="/cookies" className="hover:text-[#2D6BFF] transition-colors">Cookies</Link></li>
                     <li><Link href="/aviso-legal" className="hover:text-[#2D6BFF] transition-colors">Aviso legal</Link></li>
+                    <li><button type="button" onClick={abrirPreferenciasCookies} className="hover:text-[#2D6BFF] transition-colors text-left">Preferencias de cookies</button></li>
                 </ul>
             </div>
         </div>
