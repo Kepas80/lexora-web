@@ -2,6 +2,7 @@ import { Check, X, Sparkles, Brain, Zap, GraduationCap } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useState } from 'react';
 import { useLanguage } from '../lib/LanguageContext';
+import { PricingLive } from '../components/PricingLive';
 
 export function Pricing() {
   const [isAnnual, setIsAnnual] = useState(true);
@@ -572,6 +573,9 @@ export function Pricing() {
             </div>
         </div>
       </section>
+
+      {/* Comparativa en vivo desde la base de datos: la mantiene el agente */}
+      <PricingLive />
     </div>
   );
 }
