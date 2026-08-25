@@ -145,7 +145,7 @@ export const POLITICA_IA: LegalDoc = {
         'Resúmenes automáticos de documentos y apuntes.',
         'Transcripción de audio y conversión de grabaciones de clase en tarjetas.',
         'Examen oral: transcripción de tu respuesta hablada y evaluación automática de su contenido.',
-        'Pistas y explicaciones del tutor de estudio.',
+        'Tutor de estudio: pistas y explicaciones generadas por IA. Solo disponible para mayores de 18 años (ver apartado 7).',
         'Generación de imágenes ilustrativas para las tarjetas.',
         'Planificación del repaso espaciado (qué tarjeta te toca y cuándo).',
       ],
@@ -184,9 +184,10 @@ export const POLITICA_IA: LegalDoc = {
     {
       h: '7. Menores en centros educativos',
       p: [
-        'Cuando Lexora se usa a través de un centro, las funciones que interactúan con modelos de IA quedan reservadas al profesorado. Las cuentas de alumnado tienen desactivadas por defecto la generación de tarjetas con IA, la subida de documentos, la grabación de audio, la generación de imágenes, el tutor conversacional, el examen oral y los supuestos prácticos.',
+        'Cuando Lexora se usa a través de un centro, las funciones que interactúan con modelos de IA quedan reservadas al profesorado. Las cuentas de alumnado tienen desactivadas por defecto la generación de tarjetas con IA, la subida de documentos, la grabación de audio, la generación de imágenes, el examen oral y los supuestos prácticos.',
         'El alumnado estudia y se autoevalúa con el material que su profesorado ha preparado y asignado. Esta separación responde a la cautela reforzada que el Reglamento (UE) 2024/1689 exige respecto a los menores, y deja la supervisión pedagógica en manos de un docente.',
-        'Un centro puede habilitar alguna de estas funciones para su alumnado desde su panel de permisos, bajo su propia responsabilidad como responsable del tratamiento.',
+        'Un centro puede habilitar alguna de esas funciones para su alumnado desde su panel de permisos, bajo su propia responsabilidad como responsable del tratamiento.',
+        'El tutor de IA es la excepción y no admite configuración: está reservado a personas mayores de 18 años y no puede activarse para alumnado de un centro bajo ninguna circunstancia. Es la única función conversacional de Lexora —la persona pregunta y el modelo responde en texto libre— y por eso le aplicamos el criterio más estricto, por encima del mínimo de 16 años de la plataforma. La restricción se comprueba en el servidor, no solo en la interfaz.',
       ],
     },
     {
@@ -319,6 +320,7 @@ export const TERMINOS: LegalDoc = {
       p: [
         'Buena parte de Lexora funciona con modelos de IA. Los resultados pueden contener errores y deben revisarse antes de estudiarlos. La política de inteligencia artificial detalla qué funciones son automáticas, qué proveedores intervienen y qué prácticas descartamos.',
         'La corrección del examen oral es orientativa y no constituye calificación académica.',
+        `El tutor de IA está reservado a mayores de 18 años y no está disponible para el alumnado que accede a través de un centro, con independencia de su edad. Al marcar la casilla correspondiente declaras cumplir ese requisito; facilitar datos falsos para acceder a una función restringida es un incumplimiento de estas condiciones.`,
       ],
     },
     {
@@ -431,7 +433,8 @@ export const PRIVACIDAD: LegalDoc = {
       ],
       ul: [
         'Acceso solo con código: el alumnado entra con un código que le entrega su centro. No se le pide nombre, ni apellidos, ni correo, ni fecha de nacimiento, ni ningún otro dato identificativo. Lexora no llega a conocer quién hay detrás de cada código. El centro puede desactivar este modo si prefiere gestionar nombres por su propia organización interna, pero es una decisión suya y no el comportamiento por defecto.',
-        'Funciones de IA reservadas al profesorado: la generación de tarjetas con IA, la subida de documentos, la grabación de audio, la generación de imágenes, el tutor conversacional, el examen oral y los supuestos prácticos están desactivados para las cuentas de alumnado. Es el profesorado quien prepara el material y lo asigna; el alumnado estudia y se autoevalúa sobre ese material, pero no interactúa directamente con los modelos de IA.',
+        'Funciones de IA reservadas al profesorado: la generación de tarjetas con IA, la subida de documentos, la grabación de audio, la generación de imágenes, el examen oral y los supuestos prácticos están desactivados para las cuentas de alumnado. Es el profesorado quien prepara el material y lo asigna; el alumnado estudia y se autoevalúa sobre ese material, pero no interactúa directamente con los modelos de IA.',
+        'Tutor de IA solo para mayores de 18 años: es la única función conversacional y queda fuera del alcance del alumnado de centros y de cualquier persona que no haya declarado ser mayor de edad. Para comprobarlo guardamos únicamente una casilla de sí o no, nunca la fecha de nacimiento: no necesitamos saber tu edad, solo si eres mayor.',
         'No elaboramos perfiles publicitarios de menores, no les mostramos publicidad comportamental y no vendemos sus datos bajo ninguna circunstancia.',
         `Si detectas que una persona menor de ${EDAD_MINIMA} años se ha registrado sin la cobertura de un centro, escríbenos a ${TITULAR.emailPrivacidad} y suprimiremos la cuenta y sus datos sin demora.`,
       ],
