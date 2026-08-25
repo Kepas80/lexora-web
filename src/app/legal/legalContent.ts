@@ -182,14 +182,22 @@ export const POLITICA_IA: LegalDoc = {
       ],
     },
     {
-      h: '7. Proveedores de IA',
+      h: '7. Menores en centros educativos',
+      p: [
+        'Cuando Lexora se usa a través de un centro, las funciones que interactúan con modelos de IA quedan reservadas al profesorado. Las cuentas de alumnado tienen desactivadas por defecto la generación de tarjetas con IA, la subida de documentos, la grabación de audio, la generación de imágenes, el tutor conversacional, el examen oral y los supuestos prácticos.',
+        'El alumnado estudia y se autoevalúa con el material que su profesorado ha preparado y asignado. Esta separación responde a la cautela reforzada que el Reglamento (UE) 2024/1689 exige respecto a los menores, y deja la supervisión pedagógica en manos de un docente.',
+        'Un centro puede habilitar alguna de estas funciones para su alumnado desde su panel de permisos, bajo su propia responsabilidad como responsable del tratamiento.',
+      ],
+    },
+    {
+      h: '8. Proveedores de IA',
       p: [
         'Lexora no entrena modelos propios: utiliza modelos de terceros mediante API. En la fecha de esta política, los proveedores empleados para las funciones descritas son Google (familia de modelos Gemini) y OpenAI para la generación de imágenes.',
         'El contenido que envías a estas funciones se transmite a dichos proveedores exclusivamente para producir el resultado que has pedido, bajo condiciones contractuales que excluyen su uso para entrenamiento. El detalle de las transferencias internacionales figura en la política de privacidad.',
       ],
     },
     {
-      h: '8. Supervisión humana y reclamaciones',
+      h: '9. Supervisión humana y reclamaciones',
       p: [
         `Si un resultado de la IA te parece incorrecto, ofensivo o inadecuado, puedes escribirnos a ${TITULAR.email} y lo revisaremos manualmente. En España, la autoridad de supervisión en materia de inteligencia artificial es la Agencia Española de Supervisión de la Inteligencia Artificial (AESIA), y la Agencia Española de Protección de Datos (AEPD) cuando estén implicados datos personales.`,
       ],
@@ -419,6 +427,11 @@ export const PRIVACIDAD: LegalDoc = {
       p: [
         `Las cuentas individuales de Lexora requieren tener al menos ${EDAD_MINIMA} años. El artículo 7 de la LOPDGDD sitúa hoy en 14 años la edad para consentir el tratamiento de datos en servicios de la sociedad de la información, pero hemos elevado voluntariamente el umbral a ${EDAD_MINIMA} para anticiparnos a la reforma en tramitación y por prudencia con el público adolescente.`,
         `El alumnado menor de ${EDAD_MINIMA} años únicamente puede acceder a través de un centro educativo o academia. En ese supuesto el centro es el responsable del tratamiento, es quien recaba el consentimiento de las familias, y Lexora actúa como encargado del tratamiento en virtud del contrato previsto en el artículo 28 del RGPD.`,
+        'Aplicamos dos garantías adicionales que están activadas por defecto en todos los centros:',
+      ],
+      ul: [
+        'Acceso solo con código: el alumnado entra con un código que le entrega su centro. No se le pide nombre, ni apellidos, ni correo, ni fecha de nacimiento, ni ningún otro dato identificativo. Lexora no llega a conocer quién hay detrás de cada código. El centro puede desactivar este modo si prefiere gestionar nombres por su propia organización interna, pero es una decisión suya y no el comportamiento por defecto.',
+        'Funciones de IA reservadas al profesorado: la generación de tarjetas con IA, la subida de documentos, la grabación de audio, la generación de imágenes, el tutor conversacional, el examen oral y los supuestos prácticos están desactivados para las cuentas de alumnado. Es el profesorado quien prepara el material y lo asigna; el alumnado estudia y se autoevalúa sobre ese material, pero no interactúa directamente con los modelos de IA.',
         'No elaboramos perfiles publicitarios de menores, no les mostramos publicidad comportamental y no vendemos sus datos bajo ninguna circunstancia.',
         `Si detectas que una persona menor de ${EDAD_MINIMA} años se ha registrado sin la cobertura de un centro, escríbenos a ${TITULAR.emailPrivacidad} y suprimiremos la cuenta y sus datos sin demora.`,
       ],
