@@ -41,11 +41,21 @@ export function Navigation() {
         <div className="w-full flex items-center justify-between h-20 md:h-20 px-6 md:px-10">
           {/* Logo - Top-left, aligned vertically */}
           <div className="flex items-center">
-            <Link href="/" className="flex items-center hover:opacity-90 transition-opacity outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600 rounded-lg">
-                <img 
-                    src={logo} 
-                    alt="Lexora" 
-                    className="h-8 sm:h-9 md:h-10 w-auto flex-shrink-0" 
+            <Link href="/" className="flex items-center gap-2 hover:opacity-90 transition-opacity outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600 rounded-lg">
+                {/* Icono de la app: el mismo que el favicon y el de las tiendas,
+                    para que la marca sea reconocible en los tres sitios. */}
+                <img
+                    src="/icon-512.png"
+                    alt=""
+                    aria-hidden="true"
+                    className="h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10 rounded-lg flex-shrink-0"
+                    width={40}
+                    height={40}
+                />
+                <img
+                    src={logo}
+                    alt="Lexora"
+                    className="h-8 sm:h-9 md:h-10 w-auto flex-shrink-0"
                 />
             </Link>
           </div>
