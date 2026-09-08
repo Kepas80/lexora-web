@@ -119,7 +119,24 @@ export function aplicarConsentimiento(c: Consentimiento) {
     gaCargado = true;
     cargarScript(`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`);
     gtag('js', new Date());
-    gtag('config', GA_ID, { anonymize_ip: true });
+    gtag('config', GA_ID, {
+      anonymize_ip: true,
+      // Seguimiento entre dominios: sin esto, una persona que va de la web al
+      // dashboard se contabiliza como dos visitas distintas y el embudo de
+      // registro no se puede medir. Estaba en el index.html anterior y se perdio
+      // al pasar a Consent Mode; se recupera aqui, que es donde ahora se
+      // configura GA y solo despues de que la persona acepte la analitica.
+      linker: {
+        domains: [
+          'lexoraflashcards.com',
+          'www.lexoraflashcards.com',
+          'blog.lexoraflashcards.com',
+          'dashboard.lexoraflashcards.com',
+        ],
+      },
+      cookie_domain: 'lexoraflashcards.com',
+      cookie_flags: 'SameSite=None;Secure',
+    });
   }
 
   if (c.marketing && !bingCargado) {

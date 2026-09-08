@@ -159,8 +159,8 @@ export function Pricing() {
                {isAnnual ? t('pricing_page.plan.ia.billed_annual') : t('pricing_page.plan.ia.billed_monthly')}
             </p>
 
-            <a 
-              href="https://dashboard.lexoraflashcards.com/register?plan=ia" 
+            <a
+              href={`https://dashboard.lexoraflashcards.com/checkout?plan=ia&period=${isAnnual ? 'annual' : 'monthly'}`}
               className="mb-8 block w-full rounded-xl bg-[#2D6BFF] px-4 py-3.5 text-center text-sm font-bold text-white hover:bg-[#2558D9] hover:shadow-lg transition-all"
             >
               {t('pricing_page.plan.ia.cta')}
@@ -277,8 +277,8 @@ export function Pricing() {
                {isAnnual ? t('pricing_page.plan.pro.billed_annual') : t('pricing_page.plan.pro.billed_monthly')}
             </p>
 
-            <a 
-              href="https://dashboard.lexoraflashcards.com/register?plan=pro" 
+            <a
+              href={`https://dashboard.lexoraflashcards.com/checkout?plan=ia_pro&period=${isAnnual ? 'annual' : 'monthly'}`}
               className="mb-8 block w-full rounded-xl bg-white px-4 py-3.5 text-center text-sm font-bold text-[#0F1A33] hover:bg-slate-50 transition-colors relative z-10"
             >
               {t('pricing_page.plan.pro.cta')}

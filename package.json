@@ -6,7 +6,8 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "postbuild": "node scripts/prerender.mjs"
   },
   "dependencies": {
     "react": "18.3.1",
@@ -71,6 +72,7 @@
   "devDependencies": {
     "@tailwindcss/vite": "4.1.12",
     "@vitejs/plugin-react": "4.7.0",
+    "puppeteer": "^22.15.0",
     "tailwindcss": "4.1.12",
     "vite": "6.3.5"
   }

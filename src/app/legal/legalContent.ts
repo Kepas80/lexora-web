@@ -18,7 +18,11 @@
  *   consciente y temporal, no una solución definitiva.
  */
 
-export const LEGAL_VERSION = '2026-08-03';
+// 2026-09-08: las funciones de IA pasan a estar reservadas a mayores de 18 anos
+// (antes solo lo estaba el tutor). Lo exigen las condiciones de uso de los
+// proveedores de IA, que no permiten servir su tecnologia en productos a los que
+// sea previsible que accedan menores de 18. Se comprueba en el servidor.
+export const LEGAL_VERSION = '2026-09-08';
 
 /** Cambiar a true cuando TITULAR tenga datos reales. */
 export const MOSTRAR_DATOS_TITULAR = false;
@@ -138,16 +142,17 @@ export const POLITICA_IA: LegalDoc = {
     {
       h: '2. Estás interactuando con un sistema de IA',
       p: [
-        'Las siguientes funciones de Lexora están operadas por modelos de inteligencia artificial y no por personas. No hay ningún docente ni corrector humano al otro lado:',
+        'Todas las funciones de inteligencia artificial de Lexora están reservadas a personas de 18 años o más (ver apartado 7). La planificación del repaso espaciado —qué tarjeta te toca y cuándo— queda fuera de esa restricción: es un algoritmo determinista, no un modelo generativo, y está disponible para todas las personas usuarias con independencia de su edad.',
+        'Las siguientes funciones están operadas por modelos de inteligencia artificial y no por personas. No hay ningún docente ni corrector humano al otro lado:',
       ],
       ul: [
         'Generación de tarjetas a partir de un tema, un documento (PDF, DOCX, TXT), una imagen de apuntes o un vídeo de YouTube.',
-        'Resúmenes automáticos de documentos y apuntes.',
+        'Resúmenes automáticos de documentos y apuntes, y Flash Notes.',
         'Transcripción de audio y conversión de grabaciones de clase en tarjetas.',
         'Examen oral: transcripción de tu respuesta hablada y evaluación automática de su contenido.',
-        'Tutor de estudio: pistas y explicaciones generadas por IA. Solo disponible para mayores de 18 años (ver apartado 7).',
+        'Supuestos prácticos: generación del caso y corrección por apartados.',
+        'Tutor de estudio: pistas y explicaciones generadas por IA.',
         'Generación de imágenes ilustrativas para las tarjetas.',
-        'Planificación del repaso espaciado (qué tarjeta te toca y cuándo).',
       ],
     },
     {
@@ -182,23 +187,31 @@ export const POLITICA_IA: LegalDoc = {
       ],
     },
     {
-      h: '7. Menores en centros educativos',
+      h: '7. Edad mínima para usar la IA: 18 años',
       p: [
-        'Cuando Lexora se usa a través de un centro, las funciones que interactúan con modelos de IA quedan reservadas al profesorado. Las cuentas de alumnado tienen desactivadas por defecto la generación de tarjetas con IA, la subida de documentos, la grabación de audio, la generación de imágenes, el examen oral y los supuestos prácticos.',
-        'El alumnado estudia y se autoevalúa con el material que su profesorado ha preparado y asignado. Esta separación responde a la cautela reforzada que el Reglamento (UE) 2024/1689 exige respecto a los menores, y deja la supervisión pedagógica en manos de un docente.',
-        'Un centro puede habilitar alguna de esas funciones para su alumnado desde su panel de permisos, bajo su propia responsabilidad como responsable del tratamiento.',
-        'El tutor de IA es la excepción y no admite configuración: está reservado a personas mayores de 18 años y no puede activarse para alumnado de un centro bajo ninguna circunstancia. Es la única función conversacional de Lexora —la persona pregunta y el modelo responde en texto libre— y por eso le aplicamos el criterio más estricto, por encima del mínimo de 16 años de la plataforma. La restricción se comprueba en el servidor, no solo en la interfaz.',
+        'Todas las funciones de inteligencia artificial de Lexora están reservadas a personas de 18 años o más. No es una decisión comercial nuestra: las condiciones de uso de los proveedores de IA con los que trabajamos no permiten ofrecer su tecnología en servicios dirigidos a personas menores de 18 años ni a los que sea previsible que estas accedan. Preferimos cumplirlo de forma clara y verificable.',
+        'La comprobación se hace en el servidor y no solo en la interfaz: mientras una cuenta no tenga confirmada la mayoría de edad, cualquier petición a una función de IA se rechaza antes de enviar nada a ningún proveedor.',
+        'Al entrar en Lexora se te pide que declares si tienes 18 años o más. Puedes responder que no: en ese caso conservas tu cuenta y todo tu material, y sigues usando la creación manual de tarjetas, el repaso espaciado, los modos de estudio, los exámenes, los juegos, los retos y las estadísticas. No confirmar la edad no supone en ningún caso la suspensión ni la eliminación de la cuenta; únicamente mantiene desactivadas las funciones de IA. Facilitar una edad falsa para acceder a una función restringida es un incumplimiento de las condiciones de uso.',
+        'La edad mínima general de la plataforma sigue siendo de 16 años, que es una cuestión distinta: se refiere a quién puede tener cuenta, no a quién puede usar la IA.',
       ],
     },
     {
-      h: '8. Proveedores de IA',
+      h: '8. Menores en centros educativos',
+      p: [
+        'Cuando Lexora se usa a través de un centro, las funciones que interactúan con modelos de IA quedan reservadas al profesorado. Las cuentas de alumnado tienen desactivadas la generación de tarjetas con IA, la subida de documentos, la grabación de audio, la generación de imágenes, el examen oral y los supuestos prácticos.',
+        'El alumnado estudia y se autoevalúa con el material que su profesorado ha preparado y asignado. Esta separación responde a la cautela reforzada que el Reglamento (UE) 2024/1689 exige respecto a los menores, y deja la supervisión pedagógica en manos de un docente.',
+        'Un centro no puede habilitar funciones de IA para alumnado menor de 18 años: la restricción del apartado anterior se aplica a todas las cuentas por igual, con independencia de que el acceso sea particular o a través de un centro, y no admite configuración. El tutor de IA, además, no está disponible para alumnado de un centro bajo ninguna circunstancia, tenga la edad que tenga, porque la supervisión pedagógica corresponde al profesorado.',
+      ],
+    },
+    {
+      h: '9. Proveedores de IA',
       p: [
         'Lexora no entrena modelos propios: utiliza modelos de terceros mediante API. En la fecha de esta política, los proveedores empleados para las funciones descritas son Google (familia de modelos Gemini) y OpenAI para la generación de imágenes.',
         'El contenido que envías a estas funciones se transmite a dichos proveedores exclusivamente para producir el resultado que has pedido, bajo condiciones contractuales que excluyen su uso para entrenamiento. El detalle de las transferencias internacionales figura en la política de privacidad.',
       ],
     },
     {
-      h: '9. Supervisión humana y reclamaciones',
+      h: '10. Supervisión humana y reclamaciones',
       p: [
         `Si un resultado de la IA te parece incorrecto, ofensivo o inadecuado, puedes escribirnos a ${TITULAR.email} y lo revisaremos manualmente. En España, la autoridad de supervisión en materia de inteligencia artificial es la Agencia Española de Supervisión de la Inteligencia Artificial (AESIA), y la Agencia Española de Protección de Datos (AEPD) cuando estén implicados datos personales.`,
       ],
@@ -285,8 +298,18 @@ export const TERMINOS: LegalDoc = {
       p: [
         `Para crear una cuenta individual en Lexora es necesario tener al menos ${EDAD_MINIMA} años cumplidos. Al registrarte confirmas que cumples este requisito.`,
         'Si eres menor de edad, aunque tengas la edad mínima, no puedes contratar por tu cuenta un plan de pago: cualquier suscripción debe contratarla y abonarla tu madre, padre o tutor legal, que asume la condición de parte contratante.',
-        `El alumnado menor de ${EDAD_MINIMA} años solo puede acceder a través de un centro educativo o academia que haya contratado Lexora y que sea responsable de recabar el consentimiento de las familias. En ese caso, el centro determina qué funciones están disponibles.`,
+        `El alumnado menor de ${EDAD_MINIMA} años solo puede acceder a través de un centro educativo o academia que haya contratado Lexora y que sea responsable de recabar el consentimiento de las familias. En ese caso, el centro determina qué funciones están disponibles, dentro de los límites de estas condiciones.`,
         'Si detectamos una cuenta de una persona por debajo de la edad mínima sin la cobertura de un centro, la suspenderemos y eliminaremos sus datos. Si crees que esto ha ocurrido con una persona a tu cargo, escríbenos y actuaremos de inmediato.',
+        'Distinto de lo anterior es la edad para usar la inteligencia artificial: las funciones de IA están reservadas a personas de 18 años o más, según se detalla en el apartado siguiente y en la política de inteligencia artificial.',
+      ],
+    },
+    {
+      h: '2 bis. Confirmación de la edad y funciones de IA',
+      p: [
+        'Al entrar en Lexora te pedimos que declares si tienes 18 años o más y que aceptes estas condiciones y la política de privacidad. Guardamos esa declaración con la fecha y la hora, con la única finalidad de poder acreditar que te lo preguntamos y qué respondiste.',
+        'Mientras no confirmes la mayoría de edad, las funciones de inteligencia artificial permanecen desactivadas. Esto se comprueba en el servidor: no basta con modificar la aplicación en tu navegador.',
+        'No confirmar la edad no supone en ningún caso la suspensión ni la eliminación de tu cuenta. Conservas el acceso y todo tu contenido, y puedes seguir usando la creación manual de tarjetas, el repaso espaciado, los modos de estudio, los exámenes, los juegos, los retos y las estadísticas.',
+        'Puedes cambiar tu declaración en cualquier momento escribiéndonos. Facilitar una edad falsa para acceder a una función restringida es un incumplimiento de estas condiciones.',
       ],
     },
     {
@@ -320,7 +343,7 @@ export const TERMINOS: LegalDoc = {
       p: [
         'Buena parte de Lexora funciona con modelos de IA. Los resultados pueden contener errores y deben revisarse antes de estudiarlos. La política de inteligencia artificial detalla qué funciones son automáticas, qué proveedores intervienen y qué prácticas descartamos.',
         'La corrección del examen oral es orientativa y no constituye calificación académica.',
-        `El tutor de IA está reservado a mayores de 18 años y no está disponible para el alumnado que accede a través de un centro, con independencia de su edad. Al marcar la casilla correspondiente declaras cumplir ese requisito; facilitar datos falsos para acceder a una función restringida es un incumplimiento de estas condiciones.`,
+        'Todas las funciones de inteligencia artificial están reservadas a personas de 18 años o más, según el apartado 2 bis. Además, el tutor de IA no está disponible para el alumnado que accede a través de un centro, con independencia de su edad, porque la supervisión pedagógica corresponde al profesorado.',
       ],
     },
     {

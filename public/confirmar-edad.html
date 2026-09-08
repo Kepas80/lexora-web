@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Confirma tu cuenta · Lexora</title>
+<link rel="icon" href="/favicon.png">
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
+       background:linear-gradient(160deg,#f8fafc 0%,#eff6ff 55%,#eef2ff 100%);
+       font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+       color:#0f172a;padding:24px}
+  .caja{background:#fff;max-width:540px;width:100%;padding:40px 36px;border-radius:20px;
+        box-shadow:0 12px 40px rgba(15,23,42,.10);text-align:center}
+  .marca{font-size:22px;font-weight:800;color:#367DF9;letter-spacing:-.4px;margin-bottom:26px}
+  h1{font-size:22px;line-height:1.3;margin:0 0 14px}
+  p{color:#475569;line-height:1.65;margin:0 0 18px;font-size:15px}
+  .boton{display:inline-block;background:#367DF9;color:#fff;border:0;padding:15px 30px;
+         border-radius:12px;font-size:16px;font-weight:600;cursor:pointer;text-decoration:none;
+         font-family:inherit}
+  .boton:hover{background:#2563eb}
+  .boton[disabled]{opacity:.6;cursor:default}
+  .secundario{display:inline-block;margin-top:18px;color:#64748b;font-size:14px;text-decoration:underline;cursor:pointer}
+  .icono{font-size:44px;margin-bottom:10px;line-height:1}
+  .legal{margin-top:22px;padding:16px 18px;background:#f8fafc;border-radius:12px;
+         font-size:13px;line-height:1.6;color:#64748b;text-align:left}
+  .legal a{color:#367DF9}
+  .en{margin-top:22px;padding-top:18px;border-top:1px solid #e2e8f0;font-size:13px;
+      line-height:1.6;color:#94a3b8;text-align:left}
+  .nota{margin-top:22px;padding-top:18px;border-top:1px solid #e2e8f0;font-size:13px;color:#94a3b8;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="caja">
+  <div class="marca">Lexora</div>
+  <div id="contenido"><p>Un momento…</p></div>
+  <div class="nota">
+    Tu respuesta queda registrada con la fecha y la hora, únicamente para poder acreditar
+    que te lo preguntamos, tal y como exige la normativa de protección de datos.<br>
+    <span style="color:#cbd5e1">·</span><br>
+    Your answer is recorded with the date and time, solely to demonstrate that we asked,
+    as data protection regulations require.
+  </div>
+</div>
+
+<script>
+(function () {
+  // Página de confirmación de registro, edad y aceptación de políticas.
+  //
+  // Vive aquí y no en la función de Supabase porque Supabase reescribe el
+  // Content-Type de cualquier HTML servido desde *.supabase.co a text/plain
+  // (su protección contra el phishing). Además, así el usuario ve el dominio de
+  // Lexora en la barra del navegador, que da bastante más confianza que una url
+  // de supabase.co con un token largo.
+  //
+  // El GET solo comprueba que el token existe; nada se guarda hasta que la
+  // persona pulsa el botón (POST). Eso evita que los antivirus de correo, que
+  // abren automáticamente todos los enlaces de un mensaje, acaben declarando la
+  // edad y aceptando las condiciones por el usuario.
+
+  var API = 'https://cnaryvdbvvouxzlqlcuh.supabase.co/functions/v1/confirmar-edad';
+  var APP = 'https://dashboard.lexoraflashcards.com';
+  var TERMINOS = '/terminos';
+  var PRIVACIDAD = '/privacidad';
+
+  var params = new URLSearchParams(location.search);
+  var token = (params.get('t') || '').trim();
+  var respuesta = (params.get('r') || '').trim().toLowerCase();
+  var esMayor = respuesta === 'si';
+
+  var caja = document.getElementById('contenido');
+  function pintar(html) { caja.innerHTML = html; }
+
+  function noValido(es, en) {
+    pintar(
+      '<div class="icono">⚠️</div>' +
+      '<h1>Este enlace no es válido</h1>' +
+      '<p>' + es + '</p>' +
+      '<a class="boton" href="' + APP + '">Ir a Lexora</a>' +
+      '<div class="en"><b>This link is not valid.</b> ' + en + '</div>'
+    );
+  }
+
+  if (!token || (respuesta !== 'si' && respuesta !== 'no')) {
+    noValido(
+      'Puede que se haya cortado al copiarlo. Vuelve al correo que te enviamos y pulsa el botón directamente desde ahí.',
+      'It may have been truncated when copied. Go back to the email we sent you and click the button from there.'
+    );
+    return;
+  }
+
+  function preguntar() {
+    var declaracion = esMayor
+      ? 'Declaro que <b>tengo 18 años o más</b> y acepto las condiciones y la política de privacidad actualizadas.'
+      : 'Declaro que <b>tengo menos de 18 años</b> y acepto las condiciones y la política de privacidad actualizadas.';
+
+    var consecuencia = esMayor
+      ? 'Tendrás acceso completo a Lexora, incluidas todas las funciones de inteligencia artificial.'
+      : 'Conservas tu cuenta y todo tu material: tarjetas creadas a mano, repaso espaciado, exámenes, juegos y estadísticas. Las funciones de inteligencia artificial quedan desactivadas, porque están reservadas a mayores de 18 años.';
+
+    var declaracionEn = esMayor
+      ? 'I declare that <b>I am 18 or over</b> and I accept the updated terms and privacy policy.'
+      : 'I declare that <b>I am under 18</b> and I accept the updated terms and privacy policy.';
+
+    var consecuenciaEn = esMayor
+      ? 'You will have full access to Lexora, including all artificial intelligence features.'
+      : 'You keep your account and all your material: manually created cards, spaced repetition, exams, games and statistics. AI features are switched off, as they are restricted to users aged 18 and over.';
+
+    var otra = esMayor ? 'no' : 'si';
+
+    pintar(
+      '<h1>Solo falta que lo confirmes</h1>' +
+      '<p>' + declaracion + '</p>' +
+      '<p>' + consecuencia + '</p>' +
+      '<button class="boton" id="confirmar" type="button">Confirmar</button>' +
+      '<br><a class="secundario" href="?t=' + encodeURIComponent(token) + '&r=' + otra + '">' +
+      'Me he equivocado, quería la otra opción</a>' +
+      '<div class="legal">Al pulsar «Confirmar» aceptas los ' +
+      '<a href="' + TERMINOS + '" target="_blank" rel="noopener">términos y condiciones</a> y la ' +
+      '<a href="' + PRIVACIDAD + '" target="_blank" rel="noopener">política de privacidad</a> de Lexora.</div>' +
+      '<div class="en"><b>Confirm your account.</b> ' + declaracionEn + ' ' + consecuenciaEn +
+      ' Click «Confirmar» to accept the ' +
+      '<a href="' + TERMINOS + '" target="_blank" rel="noopener">terms</a> and ' +
+      '<a href="' + PRIVACIDAD + '" target="_blank" rel="noopener">privacy policy</a>.</div>'
+    );
+
+    document.getElementById('confirmar').addEventListener('click', guardar);
+  }
+
+  function guardar() {
+    var boton = document.getElementById('confirmar');
+    boton.disabled = true;
+    boton.textContent = 'Guardando…';
+
+    fetch(API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token: token, es_mayor: esMayor })
+    })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (!d || !d.ok) throw new Error(d && d.motivo ? d.motivo : 'desconocido');
+
+        var mensaje = esMayor
+          ? 'Hemos registrado tu confirmación. Tu cuenta queda activa con acceso completo, incluidas las funciones de inteligencia artificial.'
+          : 'Hemos registrado tu respuesta. Tu cuenta queda activa: conservas todos tus sets y puedes seguir estudiando con normalidad. Las funciones de IA permanecen desactivadas.';
+        var mensajeEn = esMayor
+          ? 'Your confirmation has been recorded. Your account is active with full access, including AI features.'
+          : 'Your answer has been recorded. Your account is active: you keep all your sets and can carry on studying as usual. AI features remain switched off.';
+        var reactivada = d.reactivada
+          ? '<p><b>Hemos reactivado tu cuenta</b>, ya puedes volver a entrar.</p>'
+          : '';
+
+        pintar(
+          '<div class="icono">✅</div>' +
+          '<h1>Listo, gracias</h1>' +
+          '<p>' + mensaje + '</p>' +
+          reactivada +
+          '<a class="boton" href="' + APP + '">Volver a estudiar</a>' +
+          '<div class="en"><b>All done, thank you.</b> ' + mensajeEn + '</div>'
+        );
+      })
+      .catch(function () {
+        pintar(
+          '<div class="icono">⚠️</div>' +
+          '<h1>No hemos podido guardar tu respuesta</h1>' +
+          '<p>Vuelve a intentarlo en un momento. Si sigue sin funcionar, responde a nuestro correo y lo resolvemos nosotros.</p>' +
+          '<button class="boton" type="button" onclick="location.reload()">Reintentar</button>' +
+          '<div class="en"><b>We could not save your answer.</b> Please try again shortly. ' +
+          'If it still fails, reply to our email and we will sort it out for you.</div>'
+        );
+      });
+  }
+
+  // Comprobación previa del token (solo lectura, no guarda nada)
+  fetch(API + '?t=' + encodeURIComponent(token))
+    .then(function (r) { return r.json(); })
+    .then(function (d) {
+      if (!d || !d.ok) {
+        noValido(
+          'Es posible que el enlace se haya copiado mal. Escríbenos y te mandamos uno nuevo.',
+          'The link may have been copied incorrectly. Write to us and we will send you a new one.'
+        );
+        return;
+      }
+      preguntar();
+    })
+    .catch(function () {
+      noValido(
+        'No hemos podido comprobar el enlace. Inténtalo de nuevo en un momento.',
+        'We could not verify the link. Please try again shortly.'
+      );
+    });
+})();
+</script>
+</body>
+</html>
