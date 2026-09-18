@@ -31,6 +31,7 @@ const ROUTES = [
   '/pricing',
   '/soluciones',
   '/solutions',
+  '/oposiciones',
   '/ayuda',
   '/help',
   '/privacidad',
@@ -151,3 +152,4 @@ prerender().catch((err) => {
   console.error('[prerender] Error fatal:', err)
   process.exit(1)
 })
+

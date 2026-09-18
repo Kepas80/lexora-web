@@ -19,6 +19,7 @@ import { Method } from './pages/Method';
 import { Thanks } from './pages/Thanks';
 import { WideImage } from './pages/WideImage';
 import { Solutions } from './pages/Solutions';
+import { Oposiciones } from './pages/Oposiciones';
 import { Blog } from './pages/Blog';
 import { BlogPost } from './pages/BlogPost';
 import { TikTok } from './pages/TikTok';
@@ -82,6 +83,8 @@ export default function App() {
               <Route path="/solutions" component={Solutions} />
               <Route path="/soluciones" component={Solutions} />
 
+              <Route path="/oposiciones" component={Oposiciones} />
+
               <Route path="/blog" component={Blog} />
               <Route path="/blog/:slug" component={BlogPost} />
 
@@ -107,3 +110,4 @@ export default function App() {
     </HelmetProvider>
   );
 }
+
