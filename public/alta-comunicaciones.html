@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Apuntarse al boletín · Lexora</title>
+<style>
+  :root { color-scheme: light; }
+  body {
+    margin: 0; background: #f1f5f9; color: #0f172a;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  .envoltorio { max-width: 520px; margin: 0 auto; padding: 48px 20px; }
+  .tarjeta {
+    background: #fff; border-radius: 16px; padding: 40px 32px; text-align: center;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, .06);
+  }
+  .icono { width: 48px; height: 48px; border-radius: 12px; margin-bottom: 20px; }
+  h1 { margin: 0 0 14px; font-size: 22px; line-height: 1.3; }
+  p { margin: 0 0 12px; font-size: 15px; line-height: 1.7; color: #475569; }
+  .pequeno { font-size: 13px; color: #94a3b8; }
+  ul { text-align: left; margin: 18px 0 0; padding-left: 20px; color: #475569; font-size: 15px; line-height: 1.7; }
+  button {
+    background: #367DF9; color: #fff; border: 0; font-size: 15px; font-weight: 600;
+    padding: 14px 32px; border-radius: 12px; cursor: pointer; margin-top: 26px;
+  }
+  button:disabled { opacity: .5; cursor: default; }
+  .pie { text-align: center; margin-top: 20px; }
+  .pie a { color: #94a3b8; font-size: 13px; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="envoltorio">
+  <div class="tarjeta">
+    <img class="icono" src="https://www.lexoraflashcards.com/icon-512.png" alt="Lexora">
+    <div id="contenido"><p>Un momento…</p></div>
+  </div>
+  <p class="pie"><a href="https://www.lexoraflashcards.com">lexoraflashcards.com</a></p>
+</div>
+
+<script>
+/*
+ * ALTA EN EL BOLETÍN
+ *
+ * Espejo de baja-comunicaciones.html, y por los mismos dos motivos:
+ *
+ * 1. La página vive en nuestro dominio porque Supabase reescribe el
+ *    Content-Type de text/html a text/plain en *.supabase.co (protección
+ *    antiphishing). Una función que devuelve HTML se ve como código.
+ *
+ * 2. El alta se hace en DOS pasos. Los antivirus de correo abren los enlaces
+ *    automáticamente; si bastara con abrir la página, estaríamos apuntando a
+ *    gente que ni ha visto el correo. Un consentimiento que en realidad dio un
+ *    robot no vale nada: esa persona marcará spam en el primer envío.
+ */
+(function () {
+  var API = 'https://cnaryvdbvvouxzlqlcuh.supabase.co/functions/v1/alta-comunicaciones';
+  var caja = document.getElementById('contenido');
+  var token = (new URLSearchParams(window.location.search).get('t') || '').trim();
+
+  function pintar(html) { caja.innerHTML = html; }
+
+  if (!token) {
+    pintar(
+      '<h1>Enlace incompleto</h1>' +
+      '<p>Este enlace no lleva el identificador necesario. Ábrelo desde el correo ' +
+      'que recibiste, o escríbenos a ' +
+      '<a href="mailto:hola@lexoraflashcards.com">hola@lexoraflashcards.com</a>.</p>'
+    );
+    return;
+  }
+
+  pintar(
+    '<h1>¿Te apuntas?</h1>' +
+    '<p>Si confirmas, te escribiremos con:</p>' +
+    '<ul>' +
+      '<li>Un truco de memoria que funciona aunque no uses Lexora.</li>' +
+      '<li>Una función de la app que a lo mejor no sabías que estaba ahí.</li>' +
+      '<li>Un artículo del blog, resumido.</li>' +
+    '</ul>' +
+    '<button id="confirmar">Sí, apúntame</button>' +
+    '<p class="pequeno" style="margin-top:18px;">Te puedes dar de baja de un clic en ' +
+    'cualquier correo. Si has llegado aquí por error, cierra esta página: no se ha ' +
+    'cambiado nada.</p>'
+  );
+
+  document.getElementById('confirmar').addEventListener('click', function () {
+    var boton = this;
+    boton.disabled = true;
+    boton.textContent = 'Un momento…';
+
+    fetch(API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token: token })
+    })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (!d || !d.ok) throw new Error(d && d.motivo ? d.motivo : 'error');
+        pintar(
+          '<h1>Apuntado</h1>' +
+          '<p>Hemos añadido a <b>' + (d.email || 'tu dirección') + '</b> al boletín.</p>' +
+          '<p class="pequeno">Puedes darte de baja desde el pie de cualquier correo, o en ' +
+          'Ajustes › Notificaciones. Sin preguntas.</p>'
+        );
+      })
+      .catch(function () {
+        pintar(
+          '<h1>No hemos podido apuntarte</h1>' +
+          '<p>El enlace no es válido o ha caducado. Escríbenos a ' +
+          '<a href="mailto:hola@lexoraflashcards.com">hola@lexoraflashcards.com</a> y lo ' +
+          'hacemos a mano.</p>'
+        );
+      });
+  });
+})();
+</script>
+</body>
+</html>
