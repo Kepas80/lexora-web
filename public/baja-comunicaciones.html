@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Darse de baja · Lexora</title>
+<style>
+  :root { color-scheme: light; }
+  body {
+    margin: 0; background: #f1f5f9; color: #0f172a;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  .envoltorio { max-width: 520px; margin: 0 auto; padding: 48px 20px; }
+  .tarjeta {
+    background: #fff; border-radius: 16px; padding: 40px 32px; text-align: center;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, .06);
+  }
+  .icono { width: 48px; height: 48px; border-radius: 12px; margin-bottom: 20px; }
+  h1 { margin: 0 0 14px; font-size: 22px; line-height: 1.3; }
+  p { margin: 0 0 12px; font-size: 15px; line-height: 1.7; color: #475569; }
+  .pequeno { font-size: 13px; color: #94a3b8; }
+  button {
+    background: #0f172a; color: #fff; border: 0; font-size: 15px; font-weight: 600;
+    padding: 14px 32px; border-radius: 12px; cursor: pointer; margin-top: 26px;
+  }
+  button:disabled { opacity: .5; cursor: default; }
+  .pie { text-align: center; margin-top: 20px; }
+  .pie a { color: #94a3b8; font-size: 13px; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="envoltorio">
+  <div class="tarjeta">
+    <img class="icono" src="https://www.lexoraflashcards.com/icon-512.png" alt="Lexora">
+    <div id="contenido"><p>Un momento…</p></div>
+  </div>
+  <p class="pie"><a href="https://www.lexoraflashcards.com">lexoraflashcards.com</a></p>
+</div>
+
+<script>
+/*
+ * BAJA DE COMUNICACIONES
+ *
+ * Por qué esta página vive aquí y no en la propia función de Supabase:
+ * Supabase reescribe el Content-Type de text/html a text/plain en todo lo que
+ * se sirve desde *.supabase.co. Es una protección antiphishing suya, para que
+ * nadie monte una página falsa bajo un dominio suyo. El resultado es que una
+ * función que devuelve HTML se muestra como código en pantalla.
+ *
+ * Ya nos pasó con confirmar-edad y se resolvió igual: la página se sirve desde
+ * nuestro dominio y la función queda como API que solo devuelve JSON, que sí
+ * pasa intacto.
+ *
+ * Y la baja se hace en DOS pasos a propósito. Los antivirus y filtros de correo
+ * abren automáticamente los enlaces de los mensajes; si bastara con abrir la
+ * página, esos robots darían de baja a gente que ni ha visto el correo.
+ */
+(function () {
+  var API = 'https://cnaryvdbvvouxzlqlcuh.supabase.co/functions/v1/baja-comunicaciones';
+  var caja = document.getElementById('contenido');
+  var token = (new URLSearchParams(window.location.search).get('t') || '').trim();
+
+  function pintar(html) { caja.innerHTML = html; }
+
+  if (!token) {
+    pintar(
+      '<h1>Enlace incompleto</h1>' +
+      '<p>Este enlace no lleva el identificador necesario. Ábrelo desde el correo ' +
+      'que recibiste, o escríbenos a ' +
+      '<a href="mailto:hola@lexoraflashcards.com">hola@lexoraflashcards.com</a>.</p>'
+    );
+    return;
+  }
+
+  pintar(
+    '<h1>¿Quieres dejar de recibir nuestros correos?</h1>' +
+    '<p>Pulsa el botón y no volveremos a escribirte con novedades ni consejos.</p>' +
+    '<button id="confirmar">Sí, darme de baja</button>' +
+    '<p class="pequeno" style="margin-top:18px;">Si has llegado aquí por error, cierra ' +
+    'esta página: no se ha cambiado nada.</p>'
+  );
+
+  document.getElementById('confirmar').addEventListener('click', function () {
+    var boton = this;
+    boton.disabled = true;
+    boton.textContent = 'Un momento…';
+
+    fetch(API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token: token })
+    })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (!d || !d.ok) throw new Error(d && d.motivo ? d.motivo : 'error');
+        pintar(
+          '<h1>Listo, no te escribimos más</h1>' +
+          '<p>Hemos dado de baja a <b>' + (d.email || 'tu dirección') + '</b> de nuestras comunicaciones.</p>' +
+          '<p class="pequeno">Seguirás recibiendo únicamente avisos imprescindibles sobre tu ' +
+          'cuenta, como un cambio en las condiciones o una incidencia que te afecte. Esos no ' +
+          'podemos dejar de mandártelos.</p>' +
+          '<p class="pequeno">Si cambias de idea, puedes volver a activarlo en Ajustes › Notificaciones.</p>'
+        );
+      })
+      .catch(function () {
+        pintar(
+          '<h1>No hemos podido darte de baja</h1>' +
+          '<p>El enlace no es válido o ha caducado. Escríbenos a ' +
+          '<a href="mailto:hola@lexoraflashcards.com">hola@lexoraflashcards.com</a> y lo ' +
+          'hacemos a mano.</p>'
+        );
+      });
+  });
+})();
+</script>
+</body>
+</html>
