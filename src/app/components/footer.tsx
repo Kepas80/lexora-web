@@ -25,6 +25,7 @@ export function Footer() {
                     <li><Link href="/pricing" className="hover:text-[#2D6BFF] transition-colors">{t('nav.pricing')}</Link></li>
                     <li><Link href="/method" className="hover:text-[#2D6BFF] transition-colors">{t('nav.method')}</Link></li>
                     <li><Link href="/solutions" className="hover:text-[#2D6BFF] transition-colors">{t('nav.solutions')}</Link></li>
+                    <li><Link href="/oposiciones" className="hover:text-[#2D6BFF] transition-colors">Oposiciones</Link></li>
                 </ul>
             </div>
 
